@@ -1,5 +1,6 @@
 import React from 'react';
 import API from "./api";
+import Transactions from "./Transactions";
 
 class Dashboard extends React.Component {
 
@@ -15,8 +16,17 @@ class Dashboard extends React.Component {
 
   render() {
 
+  let data;
+  let state = this.state;
+  
+  if (state && state.data) {
+    data = state.data;
+  }  
+
     return (
-      <div></div>  
+      <div>
+        <Transactions data={data} />
+      </div>  
     )
 
   }
