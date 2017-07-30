@@ -18,8 +18,7 @@ class AccountFilter extends React.Component {
     if (this.props.accounts) {
       let accounts = this.props.accounts; 
       Object.keys(accounts).forEach(function(key) {
-        options.push(<optgroup key={key} label={accounts[key]['accountName']}><option key={key} value={accounts[key]['accountId']}>{accounts[key]['accountId']}</option></optgroup> 
-);
+        options.push(<optgroup key={key} label={accounts[key]['accountName']}><option key={key} value={accounts[key]['accountId']}>{accounts[key]['accountId']}</option></optgroup>);
       });
       options.unshift(<option key="all" value="">All accounts</option>);
     }

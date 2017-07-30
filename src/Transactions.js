@@ -17,6 +17,14 @@ class Transactions extends React.Component {
         });
       }
 
+      let filterCategory = this.props.selectedCategories;
+      if (filterCategory) {
+        let filterCategoryArray = filterCategory.split(',');
+        filteredItems = filteredItems.filter(function(element) {
+          return filterCategoryArray.indexOf(element.category) != -1
+        });
+      }
+
       filteredItems.map((transaction, i) => {
         rows.push(<TransactionRow transaction={transaction} key={i} />);
       });
