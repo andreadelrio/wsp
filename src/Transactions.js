@@ -10,6 +10,13 @@ class Transactions extends React.Component {
     if (this.props && this.props.data) {
       filteredItems = this.props.data;
 
+      let selectedAccount = this.props.account;
+      if (selectedAccount) {
+        filteredItems = filteredItems.filter(function(item) {
+          return item.accountId === selectedAccount;
+        });
+      }
+
       filteredItems.map((transaction, i) => {
         rows.push(<TransactionRow transaction={transaction} key={i} />);
       });
