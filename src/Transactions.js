@@ -7,6 +7,7 @@ class Transactions extends React.Component {
 
     let filteredItems;
     let rows = [];
+    let total = 0;
     if (this.props && this.props.data) {
       filteredItems = this.props.data;
 
@@ -37,6 +38,7 @@ class Transactions extends React.Component {
       filteredItems.sort(custom_sort);
 
       filteredItems.map((transaction, i) => {
+        total += transaction.amount
         rows.push(<TransactionRow transaction={transaction} key={i} />);
       });
     }
@@ -49,6 +51,7 @@ class Transactions extends React.Component {
         :
         <div>
           {rows}
+          {total}
         </div>
         } 
       </div>
