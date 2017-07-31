@@ -25,6 +25,17 @@ class Transactions extends React.Component {
         });
       }
 
+      let sort = this.props.sort;
+      function custom_sort(a, b) {
+        if (sort) {
+          return new Date(a.transactionDate) - new Date(b.transactionDate);
+        } else {
+          return new Date(b.transactionDate) - new Date(a.transactionDate);
+        }   
+      }
+
+      filteredItems.sort(custom_sort);
+
       filteredItems.map((transaction, i) => {
         rows.push(<TransactionRow transaction={transaction} key={i} />);
       });

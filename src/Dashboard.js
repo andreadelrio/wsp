@@ -10,6 +10,7 @@ class Dashboard extends React.Component {
     super(props);
     this.filterByAccount = this.filterByAccount.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
+    this.sortByDate = this.sortByDate.bind(this);
     this.state = { account: "", categories: "" };
   }
 
@@ -27,6 +28,10 @@ class Dashboard extends React.Component {
 
   handleCategory(category) {
     this.setState({selectedCategories: category});
+  }
+
+  sortByDate() {
+    this.setState({sort: !this.state.sort});
   }
 
   filterByAccount(val) {
@@ -57,12 +62,13 @@ class Dashboard extends React.Component {
 
     return (
       <div>
+        <a onClick={this.sortByDate}>Sort {this.state.sort ? "UP" : "DOWN"}</a>
         <AccountFilter 
           accounts={accounts}
           account={account}
           changeOption={this.filterByAccount} />
         <Multiselect clear={this.state.clear} onSelectCategory={this.handleCategory} categories={categoriesObj} />
-        <Transactions account={account} selectedCategories={selectedCategories} data={data} />
+        <Transactions sort={this.state.sort} account={account} selectedCategories={selectedCategories} data={data} />
       </div>  
     )
 
