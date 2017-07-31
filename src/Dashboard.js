@@ -11,6 +11,7 @@ class Dashboard extends React.Component {
     this.filterByAccount = this.filterByAccount.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
+    this.clearFilters = this.clearFilters.bind(this);
     this.state = { account: "", categories: "" };
   }
 
@@ -36,6 +37,16 @@ class Dashboard extends React.Component {
 
   filterByAccount(val) {
     this.setState({account: val});
+  }
+
+  clearFilters() {
+    this.setState({ selectedCategories: "", account: "", sort: false, clear: true});
+  }
+
+  componentDidUpdate(){
+    if (this.state.clear) {
+      this.setState({clear: false});
+    }
   }
 
   render() {
@@ -69,6 +80,7 @@ class Dashboard extends React.Component {
           changeOption={this.filterByAccount} />
         <Multiselect clear={this.state.clear} onSelectCategory={this.handleCategory} categories={categoriesObj} />
         <Transactions sort={this.state.sort} account={account} selectedCategories={selectedCategories} data={data} />
+        <a onClick={this.clearFilters}>Clear Filters</a>
       </div>  
     )
 

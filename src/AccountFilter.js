@@ -13,7 +13,7 @@ class AccountFilter extends React.Component {
   }
 
   render() {
-    let selectedOption = this.props.account || '';
+    let selectedOption = this.props.account;
     let options = [];
     if (this.props.accounts) {
       let accounts = this.props.accounts; 
