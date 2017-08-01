@@ -10,7 +10,6 @@ class Transactions extends React.Component {
     let total = 0;
     if (this.props && this.props.data) {
       filteredItems = this.props.data;
-
       let selectedAccount = this.props.account;
       if (selectedAccount) {
         filteredItems = filteredItems.filter(function(item) {
@@ -44,10 +43,9 @@ class Transactions extends React.Component {
     }
 
     return (
-      <div>
-        <h1>Transactions</h1>
+      <div className="transaction-rows">
         { rows.length == 0 ? 
-        <h3>No transactions for selected accounts and categories</h3>  
+        <h4>No transactions for selected accounts and categories</h4>  
         :
         <div>
           {rows}

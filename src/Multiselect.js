@@ -34,7 +34,7 @@ var MultiSelectField = createClass({
 	render () {
 		return (
 			<div className="section">
-				<h3 className="section-heading">{this.props.label}</h3>
+				<h5 className="section-heading">Categories</h5>
 				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select categories" options={this.props.categories} onChange={this.handleSelectChange} />
 			</div>
 		);

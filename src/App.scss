@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,400');
+@import "custom-variables.scss";
+@import 'bootstrap-custom.scss';
+
+body {
+  background-color: #F5F6FA;
+  font-weight: 200;
+}
+
+.App {
+  text-align: center;
+}
+
+.description, .category {
+  text-align: left;
+}
+
+.clear, .sort {
+  cursor: pointer;
+}
+
+.clear {
+  margin: 1rem 0;
+  @include media-breakpoint-up(sm) {
+    margin-top: 1.8rem;
+  } 
+}
+
+.header {
+  background-color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 0;
+}
+
+
+.banner {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient( 45deg, $blue, #4ECDC4 );;
+}
+
+select {
+  height: 36px;
+  background-color: #fff;
+  border-color: #d9d9d9;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.transaction-rows {
+  .row {
+    &:nth-child(odd) {
+      background-color: rgba(194,194,194, 0.2);
+    }
+    &:nth-child(even) {
+      background-color: #fff;
+    }
+  } 
+}

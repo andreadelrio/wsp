@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 class AccountFilter extends React.Component {
 
@@ -24,7 +25,7 @@ class AccountFilter extends React.Component {
     }
     return (
       <div className="filter-options">
-        <label>Account</label>
+        <h5>Account</h5>
         <select id="account" value={selectedOption} onChange={this.changeOption}>
         {options}
         </select>
