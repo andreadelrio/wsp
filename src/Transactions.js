@@ -1,5 +1,7 @@
 import React from 'react';
 import TransactionRow from "./TransactionRow";
+import { Container, Row, Col } from 'reactstrap';
+import { formatPrice } from './helpers';
 
 class Transactions extends React.Component {
 
@@ -49,7 +51,11 @@ class Transactions extends React.Component {
         :
         <div>
           {rows}
-          {total}
+          <Row className="total">
+            <Col className="text-right" sm="10" xs="12">Total:</Col>
+            <Col sm="2" xs="3">{formatPrice(total)}</Col>
+          </Row>
+          
         </div>
         } 
       </div>

@@ -3,6 +3,7 @@ import API from "./api";
 import Transactions from "./Transactions";
 import Multiselect from "./Multiselect";
 import AccountFilter from "./AccountFilter";
+import Banner from "./Banner";
 import { Container, Row, Col, Button } from "reactstrap";
 import './App.css';
 
@@ -75,10 +76,9 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        <div className="banner"></div>
+        <Banner data={data} />
         <Container>
-          <h3>Transactions</h3>
-          <Row>
+          <Row className="filters pt-4">
             <Col md="5" xs="12">
               <AccountFilter 
                 accounts={accounts}
@@ -92,12 +92,15 @@ class Dashboard extends React.Component {
             <Button className="clear" onClick={this.clearFilters} color="primary">Clear Filters</Button>
             </Col>
           </Row>
-          <Row className="mt-4 hidden-sm-down header">
+          <Row className="table-title pt-2 mt-4">
+            <Col xs="12"><h5>Transactions</h5></Col>
+          </Row>
+          <Row className="hidden-sm-down header">
             <Col sm="2"><div className="sort" onClick={this.sortByDate}>Sort {this.state.sort ? "UP" : "DOWN"}</div></Col>
             <Col sm="3">Account</Col>
-            <Col sm="3" className="hidden-sm-down">Category</Col>
+            <Col sm="2" className="hidden-sm-down">Category</Col>
             <Col sm="3" className="hidden-sm-down">Description</Col>
-            <Col sm="1">Amount</Col>
+            <Col sm="2">Amount</Col>
           </Row>
           <Transactions sort={this.state.sort} account={account} selectedCategories={selectedCategories} data={data} />
         </Container>
