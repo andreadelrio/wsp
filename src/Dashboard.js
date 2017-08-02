@@ -61,6 +61,7 @@ class Dashboard extends React.Component {
   let selectedCategories;
   let state = this.state;
   let categoriesObj = [];
+  let accountsObj = [];
   
   if (state && state.data) {
     data = state.data;
@@ -72,6 +73,11 @@ class Dashboard extends React.Component {
       let categoryObj = { label: element, value: element };
       categoriesObj.push(categoryObj);
     });
+    accounts.forEach(function(element, i) {
+      let accountObj = { label: element['accountName'], value: element['accountId'] };
+      accountsObj.push(accountObj);
+    });
+    accountsObj.unshift({label: "All accounts", value: ""});
   }  
 
     return (
@@ -81,8 +87,9 @@ class Dashboard extends React.Component {
           <Row className="filters pt-4">
             <Col md="5" xs="12">
               <AccountFilter 
-                accounts={accounts}
+                accounts={accountsObj}
                 account={account}
+                clear={this.state.clear} 
                 changeOption={this.filterByAccount} />
             </Col>
             <Col md="5" xs="12">

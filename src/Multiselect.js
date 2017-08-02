@@ -18,7 +18,7 @@ var MultiSelectField = createClass({
 		};
 	},
 
-	handleSelectChange (value) {
+	handleSelectChange(value) {
 		this.setState({ value });
 		this.props.onSelectCategory(value);   
 	},

@@ -1,37 +1,46 @@
 import React from 'react';
-import './App.css';
+import createClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
-class AccountFilter extends React.Component {
+var AccountFilter = createClass({
 
-  constructor(props) {
-    super(props);
-    this.changeOption = this.changeOption.bind(this);
-  }
+  displayName: 'SelectField',
+  propTypes: {
+    label: PropTypes.string,
+  },
+  getInitialState () {
+    return {
+      disabled: false,
+      options: this.props.accounts,
+      value: null,
+    };
+  },
 
-  changeOption(e) {
-    let val = e.target.value;
-    this.props.changeOption(val);
-  }
+  changeOption(value) {
+    this.setState({ value });
+    this.props.changeOption(value);
+  },
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.clear) {
+      this.setState({
+        value: null 
+     });
+    }
+  },
+
 
   render() {
-    let selectedOption = this.props.account;
-    let options = [];
-    if (this.props.accounts) {
-      let accounts = this.props.accounts; 
-      Object.keys(accounts).forEach(function(key) {
-        options.push(<optgroup key={key} label={accounts[key]['accountName']}><option key={key} value={accounts[key]['accountId']}>{accounts[key]['accountId']}</option></optgroup>);
-      });
-      options.unshift(<option key="all" value="">All accounts</option>);
-    }
+
     return (
-      <div className="filter-options">
-        <h5>Account</h5>
-        <select id="account" value={selectedOption} onChange={this.changeOption}>
-        {options}
-        </select>
+      <div className="section">
+        <h5 className="section-heading">Account</h5>
+        <Select simpleValue clearable={false} disabled={this.state.disabled} value={this.state.value} placeholder="Select account" options={this.props.accounts} onChange={this.changeOption} />
       </div>
     );
   }
-};
+});
 
 export default AccountFilter;

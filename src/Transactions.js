@@ -66,7 +66,7 @@ class Transactions extends React.Component {
           </Row>
           <Row className="hidden-sm-down header">
             <Col sm="2"><div className="sort" onClick={this.changeDate}>Sort {this.props.sort ? "UP" : "DOWN"}</div></Col>
-            <Col sm="3">Account</Col>
+            <Col sm="3">Account N°</Col>
             <Col sm="2" className="hidden-sm-down">Category</Col>
             <Col sm="3" className="hidden-sm-down">Description</Col>
             <Col sm="2">Amount</Col>
