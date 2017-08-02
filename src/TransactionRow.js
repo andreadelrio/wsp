@@ -13,8 +13,8 @@ class TransactionRow extends React.Component {
         <Col className="hidden-sm-down" sm="3">{thing.accountId}</Col>
         <Col sm="2" className="hidden-sm-down category">{thing.category ? thing.category.replace(/_/g, " ") : undefined}</Col>
         <Col sm="3" className="hidden-sm-down description">{thing.description}</Col>
-        <Col xs="9" className="hidden-sm-up category">{thing.category ? thing.category.replace(/_/g, " ") : undefined} | {thing.description}</Col>
-        <Col sm="2" xs="3">{formatPrice(thing.amount)}</Col>
+        <Col xs="8" className="hidden-sm-up category">{thing.category ? thing.category.replace(/_/g, " ") : undefined} | {thing.description}</Col>
+        <Col sm="2" xs="4">{formatPrice(thing.amount)}</Col>
       </Row>
     )
   }

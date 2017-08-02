@@ -36,12 +36,6 @@ body {
   padding: 0.6rem 0;
 }
 
-.table-title {
-  background-color: #fff;
-  text-align: left;
-  border-bottom: 1px solid #979797;
-}
-
 .banner {
   width: 100%;
   min-height: 150px;
@@ -77,6 +71,11 @@ button {
     }
     &:nth-child(even) {
       background-color: #fff;
+    }
+    &.table-title {
+      background-color: #fff;
+      text-align: left;
+      border-bottom: 1px solid #979797;
     }
   } 
 }

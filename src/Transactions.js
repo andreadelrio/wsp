@@ -5,6 +5,15 @@ import { formatPrice } from './helpers';
 
 class Transactions extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.changeDate = this.changeDate.bind(this);
+  }
+
+  changeDate() {
+    this.props.changeDate();
+  }
+
   render() {
 
     let filteredItems;
@@ -47,15 +56,26 @@ class Transactions extends React.Component {
     return (
       <div className="transaction-rows">
         { rows.length == 0 ? 
-        <h4>No transactions for selected accounts and categories</h4>  
+        <h5 className="pt-4">No transactions for selected accounts and categories</h5>  
         :
         <div>
+          <Row className="table-title mt-4">
+            <Col className="mt-1" xs="5" sm="8"><h5>Transactions</h5></Col>
+            <Col className="text-right" xs="3" sm="2"><strong>Total:</strong></Col>
+            <Col className="text-center" xs="4" sm="2" ><strong>{formatPrice(total)}</strong></Col>
+          </Row>
+          <Row className="hidden-sm-down header">
+            <Col sm="2"><div className="sort" onClick={this.changeDate}>Sort {this.props.sort ? "UP" : "DOWN"}</div></Col>
+            <Col sm="3">Account</Col>
+            <Col sm="2" className="hidden-sm-down">Category</Col>
+            <Col sm="3" className="hidden-sm-down">Description</Col>
+            <Col sm="2">Amount</Col>
+          </Row>
           {rows}
           <Row className="total">
-            <Col className="text-right" sm="10" xs="12">Total:</Col>
-            <Col sm="2" xs="3">{formatPrice(total)}</Col>
+            <Col className="text-right" sm="10" xs="8">Total:</Col>
+            <Col sm="2" xs="4">{formatPrice(total)}</Col>
           </Row>
-          
         </div>
         } 
       </div>

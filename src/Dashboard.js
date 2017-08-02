@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
     super(props);
     this.filterByAccount = this.filterByAccount.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
-    this.sortByDate = this.sortByDate.bind(this);
+    this.handleSort = this.handleSort.bind(this);
     this.clearFilters = this.clearFilters.bind(this);
     this.state = { account: "", categories: "" };
   }
@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
     this.setState({selectedCategories: category});
   }
 
-  sortByDate() {
+  handleSort() {
     this.setState({sort: !this.state.sort});
   }
 
@@ -92,17 +92,7 @@ class Dashboard extends React.Component {
             <Button className="clear" onClick={this.clearFilters} color="primary">Clear Filters</Button>
             </Col>
           </Row>
-          <Row className="table-title pt-2 mt-4">
-            <Col xs="12"><h5>Transactions</h5></Col>
-          </Row>
-          <Row className="hidden-sm-down header">
-            <Col sm="2"><div className="sort" onClick={this.sortByDate}>Sort {this.state.sort ? "UP" : "DOWN"}</div></Col>
-            <Col sm="3">Account</Col>
-            <Col sm="2" className="hidden-sm-down">Category</Col>
-            <Col sm="3" className="hidden-sm-down">Description</Col>
-            <Col sm="2">Amount</Col>
-          </Row>
-          <Transactions sort={this.state.sort} account={account} selectedCategories={selectedCategories} data={data} />
+          <Transactions sort={this.state.sort} changeDate={this.handleSort} account={account} selectedCategories={selectedCategories} data={data} />
         </Container>
       </div>  
     )

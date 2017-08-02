@@ -3770,11 +3770,6 @@ body {
   font-weight: 600;
   padding: 0.6rem 0; }
 
-.table-title {
-  background-color: #fff;
-  text-align: left;
-  border-bottom: 1px solid #979797; }
-
 .banner {
   width: 100%;
   min-height: 150px;
@@ -3802,3 +3797,7 @@ button {
     background-color: rgba(194, 194, 194, 0.2); }
   .transaction-rows .row:nth-child(even) {
     background-color: #fff; }
+  .transaction-rows .row.table-title {
+    background-color: #fff;
+    text-align: left;
+    border-bottom: 1px solid #979797; }
