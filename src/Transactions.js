@@ -1,6 +1,6 @@
 import React from 'react';
 import TransactionRow from "./TransactionRow";
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import { formatPrice } from './helpers';
 import FontAwesome from 'react-fontawesome';
 
@@ -34,7 +34,7 @@ class Transactions extends React.Component {
       if (filterCategory) {
         let filterCategoryArray = filterCategory.split(',');
         filteredItems = filteredItems.filter(function(element) {
-          return filterCategoryArray.indexOf(element.category) != -1
+          return filterCategoryArray.indexOf(element.category) !== -1
         });
       }
 
@@ -57,7 +57,7 @@ class Transactions extends React.Component {
 
     return (
       <div className="transaction-rows">
-        { rows.length == 0 ? 
+        { rows.length === 0 ? 
         <h5 className="pt-4">No transactions for selected accounts and categories.</h5>  
         :
         <div>
@@ -68,12 +68,14 @@ class Transactions extends React.Component {
               <strong>{formatPrice(total)}</strong>
             </Col>
           </Row>
-          <Row className="hidden-sm-down header">
-            <Col sm="2"><div className="sort" onClick={this.changeDate}><FontAwesome name='calendar'/> Date {this.props.sort ? <FontAwesome name='caret-up'/> : <FontAwesome name='caret-down'/>}</div></Col>
-            <Col sm="3">Account N°</Col>
+          <Row className="header">
+            <Col sm="2" xs={{size: 4, push: 8}}>
+              <div className="sort" onClick={this.changeDate}><FontAwesome name='calendar'/> Date {this.props.sort ? <FontAwesome name='caret-up'/> : <FontAwesome name='caret-down'/>}</div>
+            </Col>
+            <Col sm="3" className="hidden-sm-down">Account N°</Col>
             <Col sm="2" className="hidden-sm-down"><FontAwesome name='tags'/> Category</Col>
-            <Col sm="3" className="hidden-sm-down">Description</Col>
-            <Col sm="2">Amount</Col>
+            <Col sm="3" xs={{size:8, pull:4}}>Description</Col>
+            <Col sm="2" className="hidden-sm-down">Amount</Col>
           </Row>
           {rows}
           <Row className="total">

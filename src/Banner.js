@@ -3,7 +3,6 @@ import { Container, Row, Col } from "reactstrap";
 import './App.css';
 import avatar from "./img/adr.jpg";
 import { formatPrice } from './helpers';
-import dateFormat from 'dateformat';
 
 
 
@@ -30,7 +29,7 @@ class Banner extends React.Component {
               <p className="hidden-sm-down" >Your last visit was: Friday, July 28th, 2017, at 12:45PM PDT</p>
             </div>
           </Col>
-          <Col xs={{size:5, offset:7}} lg={{size:2, offset:0}}>Total Balance:
+          <Col xs={{size:7, offset:5}} lg={{size:2, offset:0}}>Total Balance:
             <h4>{formatPrice(total)}</h4>
           </Col>
         </Row>
