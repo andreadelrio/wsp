@@ -11,8 +11,6 @@ class Banner extends React.Component {
 
   render() {
 
-    let someDay = new Date();
-    someDay.setDate(someDay.getDate() - 5.3);
     let total = 0;
     let items;
     if (this.props && this.props.data) {
@@ -25,12 +23,14 @@ class Banner extends React.Component {
     return (
       <Container fluid={true} className="pt-4 banner">
         <Row>
-          <Col xs={{size:4}} md={{size:1, offset:1}} className="avatar"><img className="img-fluid rounded-circle" src={avatar} alt=""/></Col>
-          <Col md={{size:7, offset:0}}>
-            <h5>Welcome back, Andrea!</h5>
-            <span className="hidden-sm-down" >Your last visit was: {dateFormat(someDay, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</span>
+          <Col xs={{size:12}} lg={{size:10, offset:0}} className="avatar">
+            <img className="img-fluid rounded-circle" src={avatar} alt=""/>
+            <div className="welcome">
+              <h5>Welcome back, Andrea!</h5>
+              <p className="hidden-sm-down" >Your last visit was: Friday, July 28th, 2017, at 12:45PM PDT</p>
+            </div>
           </Col>
-          <Col xs={{size:8, offset:4}} md={{size:2, offset:0}}>Total Balance:
+          <Col xs={{size:5, offset:7}} lg={{size:2, offset:0}}>Total Balance:
             <h4>{formatPrice(total)}</h4>
           </Col>
         </Row>

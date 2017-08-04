@@ -2,6 +2,8 @@ import React from 'react';
 import TransactionRow from "./TransactionRow";
 import { Container, Row, Col } from 'reactstrap';
 import { formatPrice } from './helpers';
+import FontAwesome from 'react-fontawesome';
+
 
 class Transactions extends React.Component {
 
@@ -56,18 +58,20 @@ class Transactions extends React.Component {
     return (
       <div className="transaction-rows">
         { rows.length == 0 ? 
-        <h5 className="pt-4">No transactions for selected accounts and categories</h5>  
+        <h5 className="pt-4">No transactions for selected accounts and categories.</h5>  
         :
         <div>
           <Row className="table-title mt-4">
             <Col className="mt-1" xs="5" sm="8"><h5>Transactions</h5></Col>
             <Col className="text-right" xs="3" sm="2"><strong>Total:</strong></Col>
-            <Col className="text-center" xs="4" sm="2" ><strong>{formatPrice(total)}</strong></Col>
+            <Col className="text-center" xs="4" sm="2" >
+              <strong>{formatPrice(total)}</strong>
+            </Col>
           </Row>
           <Row className="hidden-sm-down header">
-            <Col sm="2"><div className="sort" onClick={this.changeDate}>Sort {this.props.sort ? "UP" : "DOWN"}</div></Col>
+            <Col sm="2"><div className="sort" onClick={this.changeDate}><FontAwesome name='calendar'/> Date {this.props.sort ? <FontAwesome name='caret-up'/> : <FontAwesome name='caret-down'/>}</div></Col>
             <Col sm="3">Account N°</Col>
-            <Col sm="2" className="hidden-sm-down">Category</Col>
+            <Col sm="2" className="hidden-sm-down"><FontAwesome name='tags'/> Category</Col>
             <Col sm="3" className="hidden-sm-down">Description</Col>
             <Col sm="2">Amount</Col>
           </Row>

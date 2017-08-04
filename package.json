@@ -11,6 +11,7 @@
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
+    "react-fontawesome": "^1.6.1",
     "react-scripts": "1.0.10",
     "react-select": "^1.0.0-rc.5",
     "reactstrap": "^4.8.0"
